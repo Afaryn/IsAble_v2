@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">IsAble_Capstone</string>
+    <string name="home_nav">Home</string>
+    <string name="scan_nav">Scan</string>
+    <string name="profile_nav">Profile</string>
+    <string name="application_title">IsAble</string>
+    <string name="label_1">Welcome To</string>
+    <string name="label_desc_1">This app makes it easy for hearing and deaf people to communicate</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_onboarding_1">Bridging the Gap with Sign Language</string>
+    <string name="desc_onboarding_1">Communicate seamlessly with the deaf and hard-of-hearing community</string>
+    <string name="onboarding_fragment1">onboarding_fragment1</string>
+    <string name="title_onboarding_2">Bridging the Gap with Sign Language</string>
+    <string name="desc_onboarding_2">Communicate seamlessly with the deaf and hard-of-hearing community</string>
+    <string name="onboarding_fragment2">onboarding_fragment1</string>
+    <string name="title_onboarding_3">Bridging the Gap with Sign Language</string>
+    <string name="desc_onboarding_3">Communicate seamlessly with the deaf and hard-of-hearing community</string>
+    <string name="onboarding_fragment3">onboarding_fragment1</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>

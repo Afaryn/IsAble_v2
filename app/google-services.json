@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "22306417613",
+    "project_id": "is-able",
+    "storage_bucket": "is-able.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22306417613:android:f5eee4edcb7d32b4eaf284",
+        "android_client_info": {
+          "package_name": "com.example.isable_capstone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFcm4eEkMwVcvFiIs8VoXyi0P4jhqplos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
