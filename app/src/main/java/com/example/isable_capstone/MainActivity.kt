@@ -12,6 +12,7 @@ import com.example.isable_capstone.ui.home.HomeFragment
 import com.example.isable_capstone.ui.profile.ProfileFragment
 import com.example.isable_capstone.ui.translate.CameraActivity
 import com.example.isable_capstone.ui.translate.CameraActivity.Companion.CAMERAX_RESULT
+import com.example.isable_capstone.ui.translate.TranslateAcitivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToCamera() {
-        val intent = Intent(this, CameraActivity::class.java)
+        val intent = Intent(this, TranslateAcitivity::class.java)
         startActivity(intent)
     }
 
