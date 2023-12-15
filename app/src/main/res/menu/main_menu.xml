@@ -4,16 +4,21 @@
     <item
         android:id="@+id/menu_home"
         android:title="@string/home_nav"
-        android:icon="@drawable/home_selector"/>
+        android:icon="@drawable/home_selector"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/place_holder"
         android:title=""
         app:showAsAction="never"
+        android:enabled="false"
         />
 
     <item
         android:id="@+id/menu_profile"
         android:title="@string/profile_nav"
-        android:icon="@drawable/profile_selector"/>
+        android:icon="@drawable/profile_selector"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
 </menu>

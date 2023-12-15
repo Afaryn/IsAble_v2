@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -16,7 +17,6 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityTranslateAcitivityBinding
 import com.example.isable_capstone.ml.SignLanguageModelV3Rgb
 import com.example.isable_capstone.ml.SignLanguageModelV4Rgb
@@ -105,13 +105,20 @@ class TranslateAcitivity : AppCompatActivity() {
         }
     }
 
+    private fun resizeBitmap(bitmap: Bitmap, newWidth: Int, newHeight: Int): Bitmap {
+        val matrix = Matrix()
+        matrix.postScale(newWidth.toFloat() / bitmap.width, newHeight.toFloat() / bitmap.height)
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+    }
+
     private fun outputGenerator(bitmap: Bitmap){
         //declearing tensorflow lite model variable
 
         val model = SignLanguageModelV4Rgb.newInstance(this)
 
         // Resize the bitmap to match the input size expected by the model
-        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 244, 244, true)
+//        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 244, 244, true)
+        val resizedBitmap = resizeBitmap(bitmap, 244, 244)
 
         // Convert the Bitmap to a ByteBuffer
         val inputBuffer = ByteBuffer.allocateDirect(1 * 244 * 244 * 3 * 4)
@@ -160,7 +167,7 @@ class TranslateAcitivity : AppCompatActivity() {
 //        tvOutput.text = "Model Output: \nFloatArray: ${outputFeature0.floatArray[0]}"+"\nShape: ${outputFeature0.shape}"+"\ntypeSize: ${outputFeature0.typeSize}"+"\n" +
 //                "flatSize: ${outputFeature0.flatSize}"+"\nbuffer: ${outputFeature0.buffer}"
 //
-//        // Releases model resources if no longer used.
-//        model.close()
+        // Releases model resources if no longer used.
+        model.close()
     }
 }

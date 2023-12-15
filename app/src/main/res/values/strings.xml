@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IsAble_Capstone</string>
+    <string name="app_name">IsAble</string>
     <string name="home_nav">Home</string>
     <string name="scan_nav">Scan</string>
     <string name="profile_nav">Profile</string>
