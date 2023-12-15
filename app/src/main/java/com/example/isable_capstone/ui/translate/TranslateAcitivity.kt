@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat
 import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityTranslateAcitivityBinding
 import com.example.isable_capstone.ml.SignLanguageModelV3Rgb
+import com.example.isable_capstone.ml.SignLanguageModelV4Rgb
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
@@ -107,7 +108,7 @@ class TranslateAcitivity : AppCompatActivity() {
     private fun outputGenerator(bitmap: Bitmap){
         //declearing tensorflow lite model variable
 
-        val model = SignLanguageModelV3Rgb.newInstance(this)
+        val model = SignLanguageModelV4Rgb.newInstance(this)
 
         // Resize the bitmap to match the input size expected by the model
         val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 244, 244, true)
@@ -143,12 +144,23 @@ class TranslateAcitivity : AppCompatActivity() {
         )
         val outputFeature0 = outputs.outputFeature0AsTensorBuffer
 
+        // Dapatkan indeks dengan nilai tertinggi (kelas prediksi)
+        val maxIndex = outputFeature0.floatArray.indices.maxBy { outputFeature0.floatArray[it] } ?: -1
 
-        // Do something with the output, for example, update a TextView
-        tvOutput.text = "Model Output: \nFloatArray: ${outputFeature0.floatArray[0]}"+"\nShape: ${outputFeature0.shape}"+"\ntypeSize: ${outputFeature0.typeSize}"+"\n" +
-                "flatSize: ${outputFeature0.flatSize}"+"\nbuffer: ${outputFeature0.buffer}"
+        // Pastikan bahwa indeks adalah valid dan bukan -1
+        val classes = arrayOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+        val predictedClass = if(maxIndex != -1) classes[maxIndex] else "Unknown"
 
-        // Releases model resources if no longer used.
-        model.close()
+        // Tampilkan prediksi kelas dan probabilitas
+        tvOutput.text = "Model Output: ${predictedClass}, \nProbability: ${outputFeature0.floatArray[maxIndex]}"
+
+
+
+//        // Do something with the output, for example, update a TextView
+//        tvOutput.text = "Model Output: \nFloatArray: ${outputFeature0.floatArray[0]}"+"\nShape: ${outputFeature0.shape}"+"\ntypeSize: ${outputFeature0.typeSize}"+"\n" +
+//                "flatSize: ${outputFeature0.flatSize}"+"\nbuffer: ${outputFeature0.buffer}"
+//
+//        // Releases model resources if no longer used.
+//        model.close()
     }
 }
