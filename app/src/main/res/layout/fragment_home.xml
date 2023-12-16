@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,11 +20,12 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="84dp">
+                android:layout_height="90dp"
+                android:background="@drawable/toolbar_home">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="15dp"
                     android:src="@drawable/profile" />
@@ -32,10 +34,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15sp"
                     android:text="Halo, Budi !"
-                    android:fontFamily="@font/mbold"
+                    android:fontFamily="@font/pbold"
                     android:textSize="16sp"
-                    android:textColor="@color/black"/>
+                    />
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -56,11 +59,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/pbold"
                 android:text="FEATURES"
-                android:fontFamily="@font/mbold"
+                android:textColor="?android:attr/colorForeground"
                 android:textSize="16sp"
-                android:textColor="@color/black"/>
+                android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,59 +107,57 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp">
+
                 <TextView
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:text="Health Care Center"
-                    android:fontFamily="@font/mreguler"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
                     android:layout_marginStart="50dp"
                     android:layout_marginEnd="20dp"
-                    android:textAlignment="center"/>
+                    android:fontFamily="@font/pregular"
+                    android:text="Health Care Center"
+                    android:textAlignment="center"
+                    android:textSize="10sp" />
+
                 <TextView
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:text="Learn Sign Language"
-                    android:fontFamily="@font/mreguler"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:textAlignment="center" />
+                    android:fontFamily="@font/pregular"
+                    android:text="Learn Sign Language"
+                    android:textAlignment="center"
+                    android:textSize="10sp" />
+
                 <TextView
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/pregular"
                     android:text="Translate Hand Sign to Text"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/mreguler"
-                    android:layout_marginStart="15dp"
-                    android:textSize="10sp"/>
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/pbold"
                 android:text="ARTICLES"
-                android:fontFamily="@font/mbold"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="?android:attr/colorForeground"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/pregular"
                 android:text="Let's get to know more about hand signs."
-                android:fontFamily="@font/mbold"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="?android:attr/colorForeground"/>
             
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_artikel"

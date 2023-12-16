@@ -30,7 +30,7 @@
             android:layout_margin="15dp"
             android:fontFamily="@font/pregular"
             android:text="artikel 1"
-            android:textColor="@color/black"
+            android:textColor="?android:attr/colorForeground"
             android:textSize="15sp" />
     </LinearLayout>
 
