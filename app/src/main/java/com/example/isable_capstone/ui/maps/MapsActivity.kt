@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityMapsBinding
+import com.example.isable_capstone.ui.maps.model.dataMap.getDummyData
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -47,19 +48,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.isMapToolbarEnabled = true
 
-        // Add a marker in Sydney and move the camera
-//        val sydney = LatLng(-34.0, 151.0)
-//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val customMarker = CustomMarker(this)
+        mMap.setInfoWindowAdapter(customMarker)
 
-        val dicodingSpace = LatLng(-6.2956611, 106.5100338)
-        mMap.addMarker(
-            MarkerOptions()
-                .position(dicodingSpace)
-                .title("The Center of Indonesia Sign Language")
-                .snippet("Pusat Bahasa Isyarat Indonesia (Pusbisindo)")
-        )
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(dicodingSpace, 15f))
+        val dummyData = getDummyData()
+
+        for (result in dummyData) {
+            val marker = mMap.addMarker(
+                MarkerOptions()
+                    .position(LatLng(result.lat, result.lng))
+                    .title(result.name)
+                    .snippet(result.vicinity)
+            )
+            marker?.tag = result
+        }
+
+        if (dummyData.isNotEmpty()) {
+            val firstLocation = dummyData[0]
+            val firstMarker = LatLng(firstLocation.lat, firstLocation.lng)
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(firstMarker, 15f))
+        }
 
         getMyLocation()
     }

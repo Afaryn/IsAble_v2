@@ -80,4 +80,10 @@ dependencies {
     implementation ("androidx.camera:camera-lifecycle:1.3.0")
     implementation ("androidx.camera:camera-view:1.4.0-alpha02")
 
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.google.code.gson:gson:2.9.1")
+
+    implementation ("com.github.delight-im:Android-SimpleLocation:v1.1.0")
 }
