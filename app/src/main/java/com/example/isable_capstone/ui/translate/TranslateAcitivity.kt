@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import com.example.isable_capstone.databinding.ActivityTranslateAcitivityBinding
 import com.example.isable_capstone.ml.SignLanguageModelV3Rgb
 import com.example.isable_capstone.ml.SignLanguageModelV4Rgb
+import com.example.isable_capstone.ml.SignLanguageModelV6Rgb
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
@@ -114,7 +115,7 @@ class TranslateAcitivity : AppCompatActivity() {
     private fun outputGenerator(bitmap: Bitmap){
         //declearing tensorflow lite model variable
 
-        val model = SignLanguageModelV4Rgb.newInstance(this)
+        val model = SignLanguageModelV6Rgb.newInstance(this)
 
         // Resize the bitmap to match the input size expected by the model
 //        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 244, 244, true)
