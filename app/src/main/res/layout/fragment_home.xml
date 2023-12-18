@@ -16,12 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingBottom="100dp"
             tools:context=".HomePage">
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:background="@drawable/toolbar_home">
+                android:layout_height="90dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="40dp"
@@ -49,8 +49,8 @@
                 android:layout_height="161dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 app:iss_selected_dot="@drawable/default_selected_dot"
                 app:iss_unselected_dot="@drawable/default_unselected_dot" />
 
@@ -159,12 +159,13 @@
                 android:text="Let's get to know more about hand signs."
                 android:textSize="12sp"
                 android:textColor="?android:attr/colorForeground"/>
-            
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_artikel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_artikel"/>
+                android:scrollbars="none"
+                tools:listitem="@layout/item_artikel" />
         </LinearLayout>
 
     </ScrollView>
