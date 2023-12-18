@@ -113,17 +113,5 @@
             android:paddingVertical="12dp"
             android:text="@string/sign_in"
             app:cornerRadius="20sp" />
-
-        <Button
-            android:id="@+id/btn_signin_google"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="70dp"
-            android:backgroundTint="#083D77"
-            android:fontFamily="@font/pbold"
-            android:paddingVertical="12dp"
-            android:text="sign in google"
-            app:cornerRadius="20sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,19 +4,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.example.isable_capstone.MainActivity
 import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivitySignInBinding
-import com.example.isable_capstone.ui.authentication.sign_up.sign_up_activity
 import com.google.firebase.auth.FirebaseAuth
 
 class sign_in_activity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
-    lateinit var auth : FirebaseAuth
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

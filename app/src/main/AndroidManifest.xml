@@ -52,7 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.authentication.sign_up.sign_up_activity"
             android:exported="false" />

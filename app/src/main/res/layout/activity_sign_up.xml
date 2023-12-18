@@ -206,25 +206,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="15dp"
             android:backgroundTint="#083D77"
             android:fontFamily="@font/pbold"
             android:paddingVertical="12dp"
-            android:text="@string/sign_in"
+            android:text="@string/sign_up"
             app:cornerRadius="20sp" />
 
-        <Button
-            android:id="@+id/btn_regist_google"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="15dp"
-            android:backgroundTint="#083D77"
-            android:fontFamily="@font/pbold"
-            android:paddingVertical="12dp"
-            android:text="sign up  Goolge"
-            app:cornerRadius="20sp" />
     </LinearLayout>
 </ScrollView>
