@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.learning.LearningActivity"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/xml_toolbar"
+        layout = "@layout/toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EBEBD3">
+        <LinearLayout
+            android:id="@+id/bannerL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ready To Learn?"
+                    android:fontFamily="@font/mbold"
+                    android:textSize="27sp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mreguler"
+                    android:text="Let’s Learn BISINDO Sign Language !"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="TextSizeCheck" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/personinlearning"
+                tools:ignore="ImageContrastCheck"
+                android:contentDescription="PERSON" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/white"
+            android:layout_below="@+id/bannerL"
+            android:layout_marginBottom="-40dp"
+            app:cardCornerRadius="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="20dp"
+                        android:layout_margin="5dp">
+
+                        <ImageButton
+                            android:id="@+id/btn_alfabet_learn"
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:layout_margin="8dp"
+                            android:background="@color/white"
+                            android:contentDescription="@string/BTN"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/alfabet_learning"
+                            tools:ignore="DuplicateSpeakableTextCheck,ImageContrastCheck,RedundantDescriptionCheck" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="20dp">
+
+                        <ImageButton
+                            android:id="@+id/btn_number_learn"
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:layout_margin="8dp"
+                            android:background="@color/white"
+                            android:contentDescription="@string/BTN"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/number_learning"
+                            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="20dp"
+                        android:layout_margin="5dp">
+
+                        <ImageButton
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:layout_margin="8dp"
+                            android:background="@color/white"
+                            android:contentDescription="@string/BTN"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/alfabet2_learning"
+                            tools:ignore="RedundantDescriptionCheck" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="20dp">
+
+                        <ImageButton
+                            android:layout_width="140dp"
+                            android:layout_height="200dp"
+                            android:layout_margin="8dp"
+                            android:background="@color/white"
+                            android:contentDescription="@string/BTN"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/alfabet3_learning"
+                            tools:ignore="RedundantDescriptionCheck" />
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</LinearLayout>

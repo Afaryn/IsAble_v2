@@ -20,4 +20,6 @@
     <string name="desc_onboarding_3">Communicate seamlessly with the deaf and hard-of-hearing community</string>
     <string name="onboarding_fragment3">onboarding_fragment1</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="BTN">BUTTON</string>
 </resources>

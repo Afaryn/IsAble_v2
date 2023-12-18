@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +14,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.isable_capstone.R
 import com.example.isable_capstone.model.ArticleAdapter
 import com.example.isable_capstone.model.ArticleDataResource
+import com.example.isable_capstone.ui.learning.LearningActivity
 import com.example.isable_capstone.ui.maps.MapsActivity
 
 
@@ -72,6 +72,12 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        //<---Learnig--->
+        val btnlearn = view.findViewById<ImageButton>(R.id.btn_learning)
+        btnlearn.setOnClickListener {
+            val intent = Intent(activity, LearningActivity::class.java)
+            startActivity(intent)
+        }
 
         //<---RecyclerView--->
         val lm = LinearLayoutManager(activity)
