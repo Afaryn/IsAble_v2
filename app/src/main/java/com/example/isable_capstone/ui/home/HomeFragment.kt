@@ -14,36 +14,14 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.isable_capstone.R
 import com.example.isable_capstone.model.ArticleAdapter
 import com.example.isable_capstone.model.ArticleDataResource
+import com.example.isable_capstone.ui.detailArticle.DetailArticleActivity
+
 import com.example.isable_capstone.ui.learning.LearningActivity
 import com.example.isable_capstone.ui.maps.MapsActivity
 
+class HomeFragment : Fragment(), ArticleAdapter.OnItemClickListener {
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    private var binding : HomeFragment?=null
-    private lateinit var rvArticle:RecyclerView
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var rvArticle: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +40,7 @@ class HomeFragment : Fragment() {
         val imageSlider = view.findViewById<ImageSlider>(R.id.banner_slide)
         imageSlider.setImageList(imageList)
 
-        val delayInMillis  = 2000L
+        val delayInMillis = 2000L
         imageSlider.startSliding(delayInMillis)
 
         //<---Maps--->
@@ -72,20 +50,20 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        //<---Learnig--->
-        val btnlearn = view.findViewById<ImageButton>(R.id.btn_learning)
-        btnlearn.setOnClickListener {
+        //<---Learning--->
+        val btnLearn = view.findViewById<ImageButton>(R.id.btn_learning)
+        btnLearn.setOnClickListener {
             val intent = Intent(activity, LearningActivity::class.java)
             startActivity(intent)
         }
 
         //<---RecyclerView--->
         val lm = LinearLayoutManager(activity)
-        lm.orientation=LinearLayoutManager.VERTICAL
-        rvArticle= view.findViewById(R.id.rv_artikel)
+        lm.orientation = LinearLayoutManager.VERTICAL
+        rvArticle = view.findViewById(R.id.rv_artikel)
 
         rvArticle.setHasFixedSize(false)
-        rvArticle.layoutManager=lm
+        rvArticle.layoutManager = lm
 
         val adapter = ArticleAdapter(this)
         adapter.data = ArticleDataResource.dummyArticle
@@ -94,23 +72,13 @@ class HomeFragment : Fragment() {
         return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    // Implementation of the item click listener
+    override fun onItemClick(articleId: Int) {
+        val selectedArticle = ArticleDataResource.dummyArticle[articleId]
+
+        // Start DetailActivity and pass the selected article ID
+        val intent = Intent(activity, DetailArticleActivity::class.java)
+        intent.putExtra("article_id", selectedArticle.id)
+        startActivity(intent)
     }
 }

@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class Article(
-    var id: Long,
+    var id: Int,
     var image: Int,
     var title: String,
     var deskripsi: String

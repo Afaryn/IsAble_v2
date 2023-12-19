@@ -1,134 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@android:color/white"
     tools:context=".ui.detailArticle.DetailArticleActivity">
 
-    <ScrollView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:contentScrim="@color/yellow"
+            app:expandedTitleMarginStart="16dp"
+            app:expandedTitleMarginEnd="72dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_imgItem"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                android:src="@drawable/article_1"
+                app:layout_collapseParallaxMultiplier="0.7"
+                app:riv_corner_radius_bottom_right="20dp"
+                app:riv_corner_radius_bottom_left="20dp"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:titleTextColor="@android:color/white"/>
+
+            <ImageButton
+                android:id="@+id/imgToolbarBtnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="@drawable/bg_circle_radius"
+                android:paddingStart="15dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="15dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/arrow_back"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/tv_judul_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Article Title" />
+
+            <TextView
+                android:id="@+id/tv_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cardView"
-                app:cardElevation="4dp">
+                android:text="Article Description" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp">
-
-
-                        <ProgressBar
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:id="@+id/loader"/>
-
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop" />
-
-
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/gradient"/>
-
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:layout_gravity="bottom"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Source"
-                                android:textSize="15dp"
-                                android:fontFamily="@font/pregular"
-                                android:textColor="@color/white"
-                                android:id="@+id/tvSource"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="5 hour ago"
-                                android:gravity="right"
-                                android:textSize="15dp"
-                                android:fontFamily="@font/pregular"
-                                android:textColor="@color/white"
-                                android:id="@+id/tvDate"/>
-                        </LinearLayout>
-                    </FrameLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TITLE"
-                        android:padding="10dp"
-                        android:textSize="20dp"
-                        android:fontFamily="@font/pregular"
-                        android:textColor="@color/black"
-                        android:id="@+id/tvTitle"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Description"
-                        android:textSize="15dp"
-                        android:padding="10dp"
-                        android:fontFamily="@font/pregular"
-                        android:textColor="@color/black"
-                        android:id="@+id/tvDesc"/>
-                </LinearLayout>
-
-
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardElevation="4dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="6dp">
-
-                <ProgressBar
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:id="@+id/webViewLoader"/>
-
-                <WebView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/webView"/>
-
-            </androidx.cardview.widget.CardView>
+            <!-- Add other UI elements for additional article details -->
         </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -47,14 +47,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-//    private val launcherIntentCameraX = registerForActivityResult(
-//        ActivityResultContracts.StartActivityForResult()
-//    ) {
-//        if (it.resultCode == CAMERAX_RESULT) {
-//            currentImageUri = it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
-//            showImage()
-//        }
-//    }
 
     fun replaceFragment(fragment : Fragment){
         val fragmentManager = supportFragmentManager
