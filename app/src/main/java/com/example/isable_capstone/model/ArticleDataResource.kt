@@ -4,15 +4,15 @@ import com.example.isable_capstone.R
 
 object ArticleDataResource {
     val dummyArticle= listOf(
-        Article(1, R.drawable.article_1,"Hari Bahasa Isyarat International","Di dunia ini, terdapat sekitar 72 juta orang tunarungu yang menggunakan lebih dari 300 bahasa isyarat yang berbeda-beda. Untuk meningkatkan kesadaran akan pentingnya bahasa isyarat dalam realisasi hak asasi manusia (HAM) bagi penyandang tunarungu, Majelis Umum PBB menetapkan tanggal 23 September sebagai Hari Bahasa Isyarat Internasional.\\n\n" +
+        Article(1, R.drawable.article_1,"Hari Bahasa Isyarat International","Di dunia ini, terdapat sekitar 72 juta orang tunarungu yang menggunakan lebih dari 300 bahasa isyarat yang berbeda-beda. Untuk meningkatkan kesadaran akan pentingnya bahasa isyarat dalam realisasi hak asasi manusia (HAM) bagi penyandang tunarungu, Majelis Umum PBB menetapkan tanggal 23 September sebagai Hari Bahasa Isyarat Internasional.\n" +
                 "\n" +
                 "Salah satu cara untuk menghargai dan memperingati Hari Bahasa Isyarat Internasional adalah dengan mendatangi cafe atau restoran yang mempekerjakan teman-teman disabilitas. Di Indonesia, terdapat beberapa cafe yang mempekerjakan teman-teman disabilitas, antara lain\n" +
                 "\n" +
-                "- Sunyi Coffee (Jakarta)\b" +
-                "- Kopi Tuli (Depok)\b" +
-                "- Difabis Coffee & Tea (Jakarta)\b" +
-                "- Cupable Coffee (Sleman, Yogyakarta)\b" +
-                "- Cafe More Wyataguna (Bandung)\b" +
+                "- Sunyi Coffee (Jakarta)\n" +
+                "- Kopi Tuli (Depok)\n" +
+                "- Difabis Coffee & Tea (Jakarta)\n" +
+                "- Cupable Coffee (Sleman, Yogyakarta)\n" +
+                "- Cafe More Wyataguna (Bandung)\n" +
                 "\n" +
                 "Selain mendatangi cafe atau restoran yang mempekerjakan teman-teman disabilitas, terdapat berbagai hal lain yang dapat dilakukan untuk memperingati Hari Bahasa Isyarat Internasional, seperti belajar bahasa isyarat, berkontribusi dalam membuat kesadaran tentang pentingnya bahasa isyarat, atau lainnya.\n" +
                 "\n" +

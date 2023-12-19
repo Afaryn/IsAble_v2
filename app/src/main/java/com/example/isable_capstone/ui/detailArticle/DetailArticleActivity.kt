@@ -2,11 +2,13 @@ package com.example.isable_capstone.ui.detailArticle
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import com.bumptech.glide.Glide
 import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityDetailArticleBinding
 import com.example.isable_capstone.model.ArticleDataResource
 
+@Suppress("DEPRECATION")
 class DetailArticleActivity : AppCompatActivity() {
 
     private val viewModel = DetailArticleViewModel()
@@ -15,6 +17,8 @@ class DetailArticleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityDetailArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.imgToolbarBtnBack.setOnClickListener{onBackPressed()}
 
         val articleId = intent.getIntExtra("article_id", -1)
 
@@ -34,4 +38,8 @@ class DetailArticleActivity : AppCompatActivity() {
         }
 
     }
+
+
 }
+
+
