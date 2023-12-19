@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.learning.LearningActivity"
+    android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            app:titleTextColor="@android:color/white" >
+            <ImageButton
+                android:id="@+id/imgToolbarBtnBack"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:alpha="100"
+                android:background="@drawable/btn_bg2"
+                android:elevation="100dp"
+                android:outlineAmbientShadowColor="#151212"
+                android:outlineSpotShadowColor="#151212"
+                android:paddingStart="12dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="8dp"
+                android:src="@drawable/ic_back" />
+        </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EBEBD3">
+
+            <LinearLayout
+                android:id="@+id/bannerL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mbold"
+                        android:text="Ready To Learn?"
+                        android:textColor="@color/black"
+                        android:textSize="27sp" />
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mreguler"
+                        android:text="Let’s Learn BISINDO Sign Language !"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="TextSizeCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/bannerL"
+                android:layout_marginBottom="-40dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="40dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_sublearning"
+                    android:layout_marginTop="15dp"/>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -24,6 +24,9 @@
         android:theme="@style/Base.Theme.IsAble_Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".ui.learningDetail.SubLearning"
+            android:exported="false" />
+        <activity
             android:name=".ui.learningDetail.LearningDetailActivity"
             android:exported="false" />
         <activity
