@@ -13,4 +13,6 @@ interface ApiInterface {
         @Query("location") location: String,
         @Query("rankby") rankby: String
     ): Call<ModelResultNearby>
+
+
 }
