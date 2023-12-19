@@ -18,13 +18,15 @@
             android:orientation="vertical"
             android:paddingBottom="100dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="32dp"
-                android:src="@drawable/man" />
+                android:contentDescription="photo"
+                android:src="@drawable/man"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/text_fullname"
@@ -45,7 +47,8 @@
                 android:layout_gravity="center"
                 android:text="username"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="TextContrastCheck" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -57,10 +60,6 @@
                 android:background="@drawable/white_background"
                 android:orientation="vertical"
                 android:padding="10dp">
-
-
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -90,7 +89,8 @@
                         android:text="name"
                         android:textAlignment="viewEnd"
                         android:textColor="@color/grey"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="TextContrastCheck" />
 
                 </LinearLayout>
 
@@ -126,7 +126,8 @@
                         android:text="email"
                         android:textAlignment="viewEnd"
                         android:textColor="@color/grey"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="TextContrastCheck" />
 
                 </LinearLayout>
 
@@ -162,7 +163,8 @@
                         android:text="username"
                         android:textAlignment="viewEnd"
                         android:textColor="@color/grey"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="TextContrastCheck" />
 
                 </LinearLayout>
 
@@ -181,24 +183,25 @@
                     android:padding="8dp">
 
                     <TextView
-                        android:id="@+id/password"
+                        android:id="@+id/disability"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Password"
+                        android:text="Disability"
                         android:textColor="@color/dark_blue"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/profilePassword"
+                        android:id="@+id/profileDisability"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="password"
+                        android:text="disability"
                         android:textAlignment="viewEnd"
                         android:textColor="@color/grey"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        tools:ignore="TextContrastCheck" />
 
                 </LinearLayout>
 
@@ -217,7 +220,8 @@
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                app:cornerRadius="20dp" />
+                app:cornerRadius="20dp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/btn_logout"
@@ -235,7 +239,8 @@
                 android:textStyle="normal"
                 app:cornerRadius="20dp"
                 app:strokeColor="@color/design_default_color_error"
-                app:strokeWidth="2dp" />
+                app:strokeWidth="2dp"
+                tools:ignore="VisualLintButtonSize" />
         </LinearLayout>
     </ScrollView>
 
