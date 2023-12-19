@@ -164,8 +164,13 @@
                 android:id="@+id/rv_artikel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                tools:listitem="@layout/item_artikel"
+                android:clipToPadding="true"
+                android:overScrollMode="never"
+                android:nestedScrollingEnabled="true"
                 android:scrollbars="none"
-                tools:listitem="@layout/item_artikel" />
+                tools:itemCount="3"
+                />
         </LinearLayout>
 
     </ScrollView>

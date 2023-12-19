@@ -84,10 +84,12 @@ class HomeFragment : Fragment() {
         lm.orientation=LinearLayoutManager.VERTICAL
         rvArticle= view.findViewById(R.id.rv_artikel)
 
-        val adapeterArticle = ArticleAdapter(ArticleDataResource.dummyArticle,activity)
-        rvArticle.setHasFixedSize(true)
+        rvArticle.setHasFixedSize(false)
         rvArticle.layoutManager=lm
-        rvArticle.adapter=adapeterArticle
+
+        val adapter = ArticleAdapter(this)
+        adapter.data = ArticleDataResource.dummyArticle
+        rvArticle.adapter = adapter
 
         return view
     }

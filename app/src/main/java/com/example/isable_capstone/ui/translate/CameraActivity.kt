@@ -6,21 +6,26 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.Size
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.Toolbar
 import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityCameraBinding
+import com.example.isable_capstone.ml.SignLanguageModelV4RgbWithMetadata
+import org.tensorflow.lite.schema.Model
 
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCameraBinding
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+    private lateinit var signLanguageModel: Model
     private var imageCapture: ImageCapture? = null
 
     private val requestPermissionLauncher =
@@ -55,10 +60,12 @@ class CameraActivity : AppCompatActivity() {
                 if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) CameraSelector.DEFAULT_FRONT_CAMERA
                 else CameraSelector.DEFAULT_BACK_CAMERA
         }
-        
+
+
         startCamera()
     }
 
+    @Suppress("DEPRECATION")
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
@@ -70,7 +77,9 @@ class CameraActivity : AppCompatActivity() {
                     it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
                 }
 
-            imageCapture = ImageCapture.Builder().build()
+            imageCapture = ImageCapture.Builder()
+                .setTargetResolution(Size(244, 244))
+                .build()
 
             try {
                 cameraProvider.unbindAll()

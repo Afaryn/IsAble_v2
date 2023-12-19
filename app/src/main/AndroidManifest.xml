@@ -23,6 +23,9 @@
         android:theme="@style/Base.Theme.IsAble_Capstone"
         tools:targetApi="31">
         <activity
+            android:name=".ui.detailArticle.DetailArticleActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.learning.LearningActivity"
             android:exported="false" />
         <activity
@@ -41,7 +44,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyApzJZd4nc0m44C8m-BFoIWUNoYBMVG3J8" />
+            android:value="AIzaSyCy-fNiFCXWZCoxdPStt9d-GWlTQ63lkGM" />
 
         <activity
             android:name=".ui.maps.MapsActivity"

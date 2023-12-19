@@ -20,8 +20,10 @@ import androidx.core.content.ContextCompat
 import com.example.isable_capstone.databinding.ActivityTranslateAcitivityBinding
 import com.example.isable_capstone.ml.SignLanguageModelV3Rgb
 import com.example.isable_capstone.ml.SignLanguageModelV4Rgb
+import com.example.isable_capstone.ml.SignLanguageModelV4RgbWithMetadata
 import com.example.isable_capstone.ml.SignLanguageModelV6Rgb
 import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
 
@@ -115,52 +117,60 @@ class TranslateAcitivity : AppCompatActivity() {
     private fun outputGenerator(bitmap: Bitmap){
         //declearing tensorflow lite model variable
 
-        val model = SignLanguageModelV6Rgb.newInstance(this)
+        val model = SignLanguageModelV4RgbWithMetadata.newInstance(this)
+
+        val input = TensorImage.fromBitmap(bitmap)
+
+        // Runs model inference and gets result.
+        val outputs = model.process(input)
+        val probability = outputs.probabilityAsTensorBuffer
+
+//        tvOutput.text = "probability : ${probability.shape}"
 
         // Resize the bitmap to match the input size expected by the model
 //        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 244, 244, true)
-        val resizedBitmap = resizeBitmap(bitmap, 244, 244)
+//        val resizedBitmap = resizeBitmap(bitmap, 244, 244)
 
         // Convert the Bitmap to a ByteBuffer
-        val inputBuffer = ByteBuffer.allocateDirect(1 * 244 * 244 * 3 * 4)
-        inputBuffer.order(java.nio.ByteOrder.nativeOrder())
+//        val inputBuffer = ByteBuffer.allocateDirect(1 * 244 * 244 * 3 * 4)
+//        inputBuffer.order(java.nio.ByteOrder.nativeOrder())
 
         // Rewind the buffer before use
-        inputBuffer.rewind()
+//        inputBuffer.rewind()
 
-        val intValues = IntArray(244 * 244)
-        resizedBitmap.getPixels(intValues, 0, resizedBitmap.width, 0, 0, resizedBitmap.width, resizedBitmap.height)
+//        val intValues = IntArray(244 * 244)
+//        resizedBitmap.getPixels(intValues, 0, resizedBitmap.width, 0, 0, resizedBitmap.width, resizedBitmap.height)
+//
+//        for (i in 0 until 244) {
+//            for (j in 0 until 244) {
+//                val `val` = intValues[i * 244 + j]
+//                inputBuffer.putFloat(((`val` shr 16 and 0xFF) / 255.0).toFloat())
+//                inputBuffer.putFloat(((`val` shr 8 and 0xFF) / 255.0).toFloat())
+//                inputBuffer.putFloat(((`val` and 0xFF) / 255.0).toFloat())
+//            }
+//        }
+//
+//        // Rewind the buffer before use
+//        inputBuffer.rewind()
 
-        for (i in 0 until 244) {
-            for (j in 0 until 244) {
-                val `val` = intValues[i * 244 + j]
-                inputBuffer.putFloat(((`val` shr 16 and 0xFF) / 255.0).toFloat())
-                inputBuffer.putFloat(((`val` shr 8 and 0xFF) / 255.0).toFloat())
-                inputBuffer.putFloat(((`val` and 0xFF) / 255.0).toFloat())
-            }
-        }
-
-        // Rewind the buffer before use
-        inputBuffer.rewind()
-
-        val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 244, 244, 3), DataType.FLOAT32)
-        inputFeature0.loadBuffer(inputBuffer)
-
-        // Runs model inference and gets result.
-        val outputs = model.process(
-            inputFeature0
-        )
-        val outputFeature0 = outputs.outputFeature0AsTensorBuffer
-
-        // Dapatkan indeks dengan nilai tertinggi (kelas prediksi)
-        val maxIndex = outputFeature0.floatArray.indices.maxBy { outputFeature0.floatArray[it] } ?: -1
-
-        // Pastikan bahwa indeks adalah valid dan bukan -1
+//        val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 244, 244, 3), DataType.FLOAT32)
+//        inputFeature0.loadBuffer(inputBuffer)
+//
+//        // Runs model inference and gets result.
+//        val outputs = model.process(
+//            inputFeature0
+//        )
+//        val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+//
+//        // Dapatkan indeks dengan nilai tertinggi (kelas prediksi)
+        val maxIndex = outputs.probabilityAsTensorBuffer.floatArray.indices.maxBy { outputs.probabilityAsTensorBuffer.floatArray[it] }?:-1
+//
+//        // Pastikan bahwa indeks adalah valid dan bukan -1
         val classes = arrayOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
         val predictedClass = if(maxIndex != -1) classes[maxIndex] else "Unknown"
-
-        // Tampilkan prediksi kelas dan probabilitas
-        tvOutput.text = "Model Output: ${predictedClass}, \nProbability: ${outputFeature0.floatArray[maxIndex]}"
+//
+//        // Tampilkan prediksi kelas dan probabilitas
+        tvOutput.text = "Model Output: ${predictedClass}, \nProbability: ${outputs.probabilityAsTensorBuffer.floatArray[maxIndex]} \nshape : ${outputs.probabilityAsTensorBuffer.shape}"
 
 
 

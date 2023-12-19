@@ -1,31 +1,58 @@
 package com.example.isable_capstone.model
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.isable_capstone.R
+import com.example.isable_capstone.databinding.ItemArtikelBinding
+import com.example.isable_capstone.ui.home.HomeFragment
 
-class ArticleAdapter(var data: List<Article>, var context:Activity?):RecyclerView.Adapter<ArticleAdapter.MyViewHolder>() {
-    class MyViewHolder(view: View):RecyclerView.ViewHolder(view) {
-        val judulArticle = view.findViewById<TextView>(R.id.tv_judul_article)
-        val gambarArticle = view.findViewById<ImageView>(R.id.iv_article)
+class ArticleAdapter(private val context: HomeFragment) : RecyclerView.Adapter<ArticleAdapter.MyViewHolder>() {
+
+    private val mDiffer = AsyncListDiffer(this, object : DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.title == newItem.title
+        }
+
+        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+            return oldItem.title == newItem.title
+        }
+    })
+
+    var data: List<Article>
+        get() = mDiffer.currentList
+        set(value) {
+            mDiffer.submitList(value)
+        }
+
+    inner class MyViewHolder(private val binding: ItemArtikelBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(article: Article) {
+            with(binding) {
+                tvJudulArticle.text = article.title
+                Glide.with(itemView)
+                    .load(article.image)
+                    .into(ivArticle)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_artikel,parent,false)
-        return MyViewHolder(view)
+        val binding = ItemArtikelBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return mDiffer.currentList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.judulArticle.text = data[position].title
-        holder.gambarArticle.setImageResource(data[position].image)
+        val article = mDiffer.currentList[position]
+        holder.bind(article)
     }
 }
