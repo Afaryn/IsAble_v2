@@ -42,7 +42,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_learning">
+            android:background="@drawable/bg_hijau">
 
             <ProgressBar
                 android:id="@+id/progressBar"

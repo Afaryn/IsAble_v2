@@ -1,21 +1,14 @@
 package com.example.isable_capstone.ui.learningDetail
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.recyclerview.widget.ListAdapter
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ItemSublearningBinding
-import com.example.isable_capstone.model.ArticleAdapter
 import com.example.isable_capstone.response.AllAngkaResponseItem
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+
 
 class SubLearningAdapter: ListAdapter<AllAngkaResponseItem, SubLearningAdapter.MyViewHolder>(DIFF_CALLBACK){
 

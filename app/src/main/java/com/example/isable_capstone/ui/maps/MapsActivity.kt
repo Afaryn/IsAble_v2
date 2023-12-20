@@ -20,12 +20,15 @@ import com.google.android.gms.maps.model.MarkerOptions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 @Suppress("DEPRECATION")
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Map"
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -76,7 +81,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         if (it.isNotEmpty()) {
                             val firstLocation = it[0]
                             val firstMarker = LatLng(firstLocation.latitude?.toDouble() ?: 0.0, firstLocation.longtitude?.toDouble() ?: 0.0)
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(firstMarker, 15f))
+//                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(firstMarker, 15f))
                         }
                     } ?: run {
                         // Handle case where response body is null
@@ -110,6 +115,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             mMap.isMyLocationEnabled = true
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location ->
+                    location?.let {
+                        val userLatLng = LatLng(it.latitude, it.longitude)
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 13f))
+                    }
+                }
         } else {
             requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }

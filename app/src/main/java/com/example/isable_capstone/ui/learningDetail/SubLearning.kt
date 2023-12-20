@@ -1,19 +1,14 @@
 package com.example.isable_capstone.ui.learningDetail
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivitySubLearningBinding
 import com.example.isable_capstone.model.ResultState
 import com.example.isable_capstone.ui.ViewModelFactory
+
 
 class SubLearning : AppCompatActivity() {
 
@@ -21,7 +16,7 @@ class SubLearning : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
     private lateinit var adapter: SubLearningAdapter
-    private lateinit var binding:ActivitySubLearningBinding
+    private lateinit var binding: ActivitySubLearningBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

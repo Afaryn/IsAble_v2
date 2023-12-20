@@ -10,19 +10,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityTranslateAcitivityBinding
 import com.example.isable_capstone.ml.SignLanguageModelV3Rgb
 import com.example.isable_capstone.ml.SignLanguageModelV4Rgb
 import com.example.isable_capstone.ml.SignLanguageModelV4RgbWithMetadata
 import com.example.isable_capstone.ml.SignLanguageModelV6Rgb
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.auth.FirebaseAuth
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -41,6 +45,12 @@ class TranslateAcitivity : AppCompatActivity() {
         binding = ActivityTranslateAcitivityBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        val toolbar = findViewById<Toolbar>(R.id.xml_toolbar)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.title="Translate"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         imageView= binding.ivPhoto
         button = binding.btnTakePhoto
@@ -186,5 +196,18 @@ class TranslateAcitivity : AppCompatActivity() {
 //
         // Releases model resources if no longer used.
         model.close()
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Tindakan yang akan diambil saat tombol back ditekan
+                onBackPressed()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

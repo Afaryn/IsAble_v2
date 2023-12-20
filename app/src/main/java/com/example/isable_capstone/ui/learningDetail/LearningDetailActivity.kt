@@ -1,11 +1,9 @@
 package com.example.isable_capstone.ui.learningDetail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
-import com.example.isable_capstone.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.isable_capstone.databinding.ActivityLearningDetailBinding
-import com.google.firebase.auth.FirebaseAuth
+
 
 class LearningDetailActivity : AppCompatActivity() {
 
