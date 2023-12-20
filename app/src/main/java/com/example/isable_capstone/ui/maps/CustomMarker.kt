@@ -5,8 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.isable_capstone.R
-import com.example.isable_capstone.ui.maps.model.dataMap.DummyData
-import com.example.isable_capstone.ui.maps.model.dataMap.ModelResults
+import com.example.isable_capstone.api.response.MapsResponseItem
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter
 import com.google.android.gms.maps.model.Marker
 
@@ -19,10 +18,10 @@ class CustomMarker(private val context: Context) : InfoWindowAdapter {
 
         val tvNamaLokasi = view.findViewById<TextView>(R.id.tvNamaLokasi)
         val tvAlamat = view.findViewById<TextView>(R.id.tvAlamat)
-        val infoWindowData = marker.tag as DummyData
+        val infoWindowData = marker.tag as MapsResponseItem
 
-        tvNamaLokasi.text = infoWindowData.name
-        tvAlamat.text = infoWindowData.vicinity
+        tvNamaLokasi.text = infoWindowData.namatempat
+        tvAlamat.text = infoWindowData.alamat
 
         return view
     }
