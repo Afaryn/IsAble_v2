@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mbold"
                         android:text="Alphabet"
-                        android:textColor="@color/design_default_color_surface"
+                        android:textColor="@color/black"
                         android:textSize="27sp" />
 
                     <TextView

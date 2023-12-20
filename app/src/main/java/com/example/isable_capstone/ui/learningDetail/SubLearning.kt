@@ -3,6 +3,7 @@ package com.example.isable_capstone.ui.learningDetail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.isable_capstone.api.ApiConfig
 import com.example.isable_capstone.api.response.LearningResponseItem
@@ -11,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@Suppress("DEPRECATION")
 class SubLearning : AppCompatActivity() {
 
     private lateinit var learning: LearnAdapter
@@ -27,6 +29,8 @@ class SubLearning : AppCompatActivity() {
         learning = LearnAdapter(this, arrayListOf())
         binding.rv.setHasFixedSize(false)
         binding.rv.adapter = learning
+
+        binding.imgToolbarBtnBack.setOnClickListener{onBackPressed()}
 
         getLearning(path.toString())
     }

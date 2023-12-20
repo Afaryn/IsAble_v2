@@ -25,8 +25,8 @@ import com.example.isable_capstone.ml.SignLanguageModelV3Rgb
 import com.example.isable_capstone.ml.SignLanguageModelV4Rgb
 import com.example.isable_capstone.ml.SignLanguageModelV4RgbWithMetadata
 import com.example.isable_capstone.ml.SignLanguageModelV6Rgb
-import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -46,8 +46,7 @@ class TranslateAcitivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val toolbar = findViewById<Toolbar>(R.id.xml_toolbar)
-
+        val toolbar = binding.xmlToolbar.root
         setSupportActionBar(toolbar)
         supportActionBar?.title="Translate"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -70,17 +69,12 @@ class TranslateAcitivity : AppCompatActivity() {
 //            if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)
 //                ==PackageManager.PERMISSION_GRANTED){
 //                val intent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//                intent.type = "iamge/*"
+//                intent.type = "image/*"
 //                val mimeTypes = arrayOf("image/jpeg","image/png","image/jpg")
 //                intent.putExtra(Intent.EXTRA_MIME_TYPES,mimeTypes)
 //                intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
 //                onResult.launch(intent)
 //            }
-            ImagePicker.with(this)
-                .crop()
-                .compress(255)
-                .maxResultSize(244, 244)
-                .start()
         }
     }
 
@@ -202,11 +196,9 @@ class TranslateAcitivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                // Tindakan yang akan diambil saat tombol back ditekan
                 onBackPressed()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }
