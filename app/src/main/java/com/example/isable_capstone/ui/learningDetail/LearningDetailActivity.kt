@@ -1,22 +1,26 @@
 package com.example.isable_capstone.ui.learningDetail
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.isable_capstone.databinding.ActivityLearningDetailBinding
-
 
 class LearningDetailActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityLearningDetailBinding
+    private lateinit var binding: ActivityLearningDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLearningDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val link = intent.getStringExtra("foto")
+
         setupView()
 
-
+        Glide.with(this)
+            .load(link)
+            .into(binding.btnAlfabetLearn)
     }
 
     private fun setupView(){

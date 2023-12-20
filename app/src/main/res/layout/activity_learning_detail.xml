@@ -46,46 +46,6 @@
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="100dp"
-        android:fontFamily="@font/pregular"
-        android:text="Before"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="14sp"
-        app:cornerRadius="20dp"
-        app:icon="@drawable/baseline_navigate_before"
-        app:iconGravity="start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="100dp"
-        android:fontFamily="@font/pregular"
-        android:text="Next"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="14sp"
-        app:cornerRadius="20dp"
-        app:icon="@drawable/baseline_navigate_next"
-        app:iconGravity="end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
