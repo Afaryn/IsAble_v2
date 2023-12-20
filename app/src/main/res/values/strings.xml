@@ -13,11 +13,11 @@
     <string name="title_onboarding_1">Bridging the Gap with Sign Language</string>
     <string name="desc_onboarding_1">Communicate seamlessly with the deaf and hard-of-hearing community</string>
     <string name="onboarding_fragment1">onboarding_fragment1</string>
-    <string name="title_onboarding_2">Bridging the Gap with Sign Language</string>
-    <string name="desc_onboarding_2">Communicate seamlessly with the deaf and hard-of-hearing community</string>
+    <string name="title_onboarding_2">Sign Language Exploration through Advanced Technology</string>
+    <string name="desc_onboarding_2">Experience the benefits of advanced camera features in helping you communicate more effectively</string>
     <string name="onboarding_fragment2">onboarding_fragment1</string>
-    <string name="title_onboarding_3">Bridging the Gap with Sign Language</string>
-    <string name="desc_onboarding_3">Communicate seamlessly with the deaf and hard-of-hearing community</string>
+    <string name="title_onboarding_3">Join the Warmth of the Sign Language Community</string>
+    <string name="desc_onboarding_3">Find peers, share experiences, and improve your communication skills together</string>
     <string name="onboarding_fragment3">onboarding_fragment1</string>
     <string name="title_activity_maps">MapsActivity</string>
 

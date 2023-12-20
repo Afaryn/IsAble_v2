@@ -4,14 +4,14 @@ import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-@Parcelize
+
 data class AllAngkaResponse(
 
 	@field:SerializedName("AllAngkaResponse")
 	val allAngkaResponse: List<AllAngkaResponseItem>
-) : Parcelable
+)
 
-@Parcelize
+
 data class AllAngkaResponseItem(
 
 	@field:SerializedName("createdAt")
@@ -34,4 +34,4 @@ data class AllAngkaResponseItem(
 
 	@field:SerializedName("updatedAt")
 	val updatedAt: String
-) : Parcelable
+)
