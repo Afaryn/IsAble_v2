@@ -9,13 +9,8 @@ import com.example.isable_capstone.response.AllAngkaResponseItem
 import kotlinx.coroutines.launch
 
 class SubLearningViewModel(private val repository: Repository): ViewModel() {
-//    private val _angkaList = MutableLiveData<List<AllAngkaResponseItem>>()
-//    val angkaList: LiveData<List<AllAngkaResponseItem>> get() = _angkaList
+
 
     fun getAll(modul: String) = repository.getAll(modul)
-//    fun getAllAngka(modul: String) {
-//        viewModelScope.launch {
-//            _angkaList.value = repository.getAll(modul)
-//        }
-//    }
+
 }

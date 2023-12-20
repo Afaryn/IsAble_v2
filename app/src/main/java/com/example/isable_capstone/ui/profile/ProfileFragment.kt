@@ -33,10 +33,8 @@ class ProfileFragment : Fragment() {
         val userID = auth.currentUser?.uid.toString()
 
         val name = view.findViewById<TextView>(R.id.profileName)
-        val nameAtas = view.findViewById<TextView>(R.id.text_fullname)
         val email = view.findViewById<TextView>(R.id.profileEmail)
         val username = view.findViewById<TextView>(R.id.profileUsername)
-        val usernameAtas = view.findViewById<TextView>(R.id.text_username)
         val disability = view.findViewById<TextView>(R.id.profileDisability)
 
         val profile = view.findViewById<ImageView>(R.id.iv_profile)
@@ -57,10 +55,8 @@ class ProfileFragment : Fragment() {
                 val data = dataSnapshot.getValue(DataProfile::class.java)
 
                 name.text = data?.name.toString()
-                nameAtas.text = data?.name.toString()
                 email.text = data?.email.toString()
                 username.text = data?.username.toString()
-                usernameAtas.text = data?.username.toString()
                 disability.text = data?.disabilitas.toString()
             }
 

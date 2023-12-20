@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,24 +28,24 @@ class SubLearning : AppCompatActivity() {
         binding= ActivitySubLearningBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val layoutManager = LinearLayoutManager(this)
+        binding.rv.layoutManager = layoutManager
+        adapter = SubLearningAdapter()
+
         val modul = intent.getStringExtra(EXTRA_KEY)
         val bundle =Bundle()
         bundle.putString(EXTRA_KEY,modul)
-        Log.d("MODULLLLLLL", "MODUL YG TERPILIH: ${modul}")
 
         // Inisialisasi RecyclerView dan Adapter
-        val layoutManager = LinearLayoutManager(this)
-        binding.rv.layoutManager = layoutManager
 
-        adapter = SubLearningAdapter()
 
-        viewModel.getAll(modul!!).observe(this){modul->
-            when(modul){
+        viewModel.getAll(modul!!).observe(this){materi->
+            when(materi){
                 is ResultState.Loading->{
                     showLoading(true)
                 }
                 is ResultState.Success->{
-                    val datamodul = modul.data
+                    val datamodul = materi.data
                     adapter.submitList(datamodul)
                     binding.rv.adapter=adapter
                     showLoading(false)

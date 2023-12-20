@@ -11,7 +11,8 @@ interface ApiService {
     fun getMapsData(): Call<List<MapsResponseItem>>
 
     @GET("/{modul}")
-    fun getAll(@Path("modul") modul:String):List<AllAngkaResponseItem>
+    suspend fun getAll(@Path("modul") modul:String
+    ): List<AllAngkaResponseItem>
 
 
 }

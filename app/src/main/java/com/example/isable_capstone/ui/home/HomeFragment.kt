@@ -65,12 +65,35 @@ class HomeFragment : Fragment(), ArticleAdapter.OnItemClickListener{
                 val nama = data?.name.toString()
                 name.text = "Halo, $nama !"
             }
+
             override fun onCancelled(databaseError: DatabaseError) {
                 Toast.makeText(context, "Profile Error", Toast.LENGTH_SHORT).show()
             }
         })
 
+
         //<---Slider--->
+        setupImageSlider(view)
+
+        //<---Maps--->
+        val btnMap = view.findViewById<ImageButton>(R.id.btn_map)
+        btnMap.setOnClickListener {
+            startActivity(Intent(activity, MapsActivity::class.java))
+        }
+
+        //<---Learning--->
+        val btnLearn = view.findViewById<ImageButton>(R.id.btn_learning)
+        btnLearn.setOnClickListener {
+            startActivity(Intent(activity, LearningActivity::class.java))
+        }
+
+        //<---RecyclerView--->
+        setupRecyclerView(view)
+
+        return view
+    }
+
+    private fun setupImageSlider(view: View) {
         val imageList = ArrayList<SlideModel>()
 
         imageList.add(SlideModel(R.drawable.banner1))
@@ -81,36 +104,21 @@ class HomeFragment : Fragment(), ArticleAdapter.OnItemClickListener{
         val imageSlider = view.findViewById<ImageSlider>(R.id.banner_slide)
         imageSlider.setImageList(imageList)
 
-        val delayInMillis  = 2000L
+        val delayInMillis = 2000L
         imageSlider.startSliding(delayInMillis)
+    }
 
-        //<---Maps--->
-        val btnMap = view.findViewById<ImageButton>(R.id.btn_map)
-        btnMap.setOnClickListener {
-            val intent = Intent(activity, MapsActivity::class.java)
-            startActivity(intent)
-        }
-
-        //<---Learnig--->
-        val btnlearn = view.findViewById<ImageButton>(R.id.btn_learning)
-        btnlearn.setOnClickListener {
-            val intent = Intent(activity, LearningActivity::class.java)
-            startActivity(intent)
-        }
-
-        //<---RecyclerView--->
+    private fun setupRecyclerView(view: View) {
         val lm = LinearLayoutManager(activity)
-        lm.orientation=LinearLayoutManager.VERTICAL
-        rvArticle= view.findViewById(R.id.rv_artikel)
+        lm.orientation = LinearLayoutManager.VERTICAL
+        rvArticle = view.findViewById(R.id.rv_artikel)
 
         rvArticle.setHasFixedSize(false)
-        rvArticle.layoutManager=lm
+        rvArticle.layoutManager = lm
 
         val adapter = ArticleAdapter(this)
         adapter.data = ArticleDataResource.dummyArticle
         rvArticle.adapter = adapter
-
-        return view
     }
 
     // Implementation of the item click listener

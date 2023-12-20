@@ -19,31 +19,33 @@
             android:paddingBottom="100dp"
             tools:context=".HomePage">
 
+
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="90dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/homeProfile"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/profile" />
+                android:layout_height="90dp"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/usernameHome"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginEnd="15sp"
-                    android:text="Halo, Budi !"
                     android:fontFamily="@font/pbold"
-                    android:textSize="16sp"
-                    />
+                    android:text="Halo, Budi !"
+                    android:textColor="?android:attr/colorForeground"
+                    android:textSize="18sp" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/homeProfile"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/profile"
+                    android:layout_gravity="end"/>
 
             </androidx.appcompat.widget.Toolbar>
-
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/banner_slide"
@@ -65,7 +67,7 @@
                 android:fontFamily="@font/pbold"
                 android:text="FEATURES"
                 android:textColor="?android:attr/colorForeground"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,9 +76,9 @@
 
                 <ImageButton
                     android:id="@+id/btn_map"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="60dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="50dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/circular_button"
                     android:src="@drawable/map"
@@ -85,8 +87,8 @@
 
                 <ImageButton
                     android:id="@+id/btn_learning"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="40dp"
                     android:layout_marginEnd="40dp"
                     android:background="@drawable/circular_button"
@@ -95,8 +97,8 @@
                     android:contentDescription="button"/>
 
                 <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="60dp"
                     android:background="@drawable/circular_button"
@@ -112,33 +114,38 @@
                 android:layout_marginTop="5dp">
 
                 <TextView
-                    android:layout_width="70dp"
+                    style="@style/Widget.AppCompat.TextView"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="33dp"
                     android:fontFamily="@font/pregular"
                     android:text="Health Care Center"
                     android:textAlignment="center"
-                    android:textSize="10sp" />
+                    android:textColor="?android:attr/colorForeground"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:layout_width="70dp"
+                    style="@style/Widget.AppCompat.TextView"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="30dp"
+                    android:textColor="?android:attr/colorForeground"
                     android:layout_marginEnd="20dp"
                     android:fontFamily="@font/pregular"
                     android:text="Learn Sign Language"
                     android:textAlignment="center"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:layout_width="80dp"
+                    style="@style/Widget.AppCompat.TextView"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/pregular"
                     android:text="Translate Hand Sign to Text"
                     android:textAlignment="center"
-                    android:textSize="10sp" />
+                    android:textColor="?android:attr/colorForeground"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <TextView
@@ -149,8 +156,8 @@
                 android:layout_marginEnd="25dp"
                 android:fontFamily="@font/pbold"
                 android:text="ARTICLES"
-                android:textSize="16sp"
-                android:textColor="?android:attr/colorForeground"/>
+                android:textColor="?android:attr/colorForeground"
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -165,14 +172,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_artikel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_artikel"
+                android:layout_height="651dp"
                 android:clipToPadding="true"
-                android:overScrollMode="never"
                 android:nestedScrollingEnabled="true"
+                android:overScrollMode="never"
                 android:scrollbars="none"
                 tools:itemCount="3"
-                />
+                tools:listitem="@layout/item_artikel" />
         </LinearLayout>
 
     </ScrollView>

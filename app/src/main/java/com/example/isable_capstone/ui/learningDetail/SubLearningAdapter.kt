@@ -42,7 +42,6 @@ class SubLearningAdapter: ListAdapter<AllAngkaResponseItem, SubLearningAdapter.M
     inner class MyViewHolder(private val binding: ItemSublearningBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
-                @Suppress("DEPRECATION")
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val user = getItem(position)

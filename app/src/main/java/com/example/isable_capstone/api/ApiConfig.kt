@@ -1,23 +1,28 @@
 package com.example.isable_capstone.api
 
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiConfig {
-    private val baseUrl = "https://isable-backend-api-52tq7qpvtq-et.a.run.app"
-    val apiService: ApiService
-        get() {
-            val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-            val client = OkHttpClient.Builder()
-                .addInterceptor(interceptor)
+object ApiConfig {
+    fun getApiService(): ApiService {
+        val authInterceptor = Interceptor { chain ->
+            val req = chain.request()
+            val requestHeaders = req.newBuilder()
+                .addHeader("Authorization", "12345678")
                 .build()
-            val retrofit = Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
-            return retrofit.create(ApiService::class.java)
+            chain.proceed(requestHeaders)
         }
+        val client = OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://isable-backend-api-52tq7qpvtq-et.a.run.app/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        return retrofit.create(ApiService::class.java)
+    }
 }

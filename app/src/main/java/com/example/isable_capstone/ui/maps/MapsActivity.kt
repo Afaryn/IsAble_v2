@@ -56,7 +56,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val customMarker = CustomMarker(this)
         mMap.setInfoWindowAdapter(customMarker)
 
-        val apiService = ApiConfig().apiService
+        val apiService = ApiConfig.getApiService()
 
         apiService.getMapsData().enqueue(object : Callback<List<MapsResponseItem>> {
             override fun onResponse(call: Call<List<MapsResponseItem>>, response: Response<List<MapsResponseItem>>) {
