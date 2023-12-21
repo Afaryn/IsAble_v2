@@ -1,5 +1,3 @@
-// DetailArticleViewModel.kt
-
 package com.example.isable_capstone.ui.detailArticle
 
 import androidx.lifecycle.LiveData

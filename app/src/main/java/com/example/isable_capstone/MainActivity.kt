@@ -4,14 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.example.isable_capstone.databinding.ActivityMainBinding
 import com.example.isable_capstone.ui.home.HomeFragment
 import com.example.isable_capstone.ui.profile.ProfileFragment
-import com.example.isable_capstone.ui.translate.CameraActivity
-import com.example.isable_capstone.ui.translate.CameraActivity.Companion.CAMERAX_RESULT
 import com.example.isable_capstone.ui.translate.TranslateAcitivity
 
 class MainActivity : AppCompatActivity() {
@@ -48,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun replaceFragment(fragment : Fragment){
+    private fun replaceFragment(fragment : Fragment){
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout,fragment)

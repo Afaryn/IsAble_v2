@@ -1,38 +1,25 @@
 package com.example.isable_capstone.ui.translate
 
-import android.app.Activity
-import android.content.Intent
+
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Matrix
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityTranslateAcitivityBinding
-import com.example.isable_capstone.ml.SignLanguageModelV3Rgb
-import com.example.isable_capstone.ml.SignLanguageModelV4Rgb
 import com.example.isable_capstone.ml.SignLanguageModelV4RgbWithMetadata
-import com.example.isable_capstone.ml.SignLanguageModelV6Rgb
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
-import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
-import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
-import java.nio.ByteBuffer
+
 
 class TranslateAcitivity : AppCompatActivity() {
 
@@ -41,7 +28,6 @@ class TranslateAcitivity : AppCompatActivity() {
     private lateinit var button: Button
     private lateinit var tvOutput : TextView
     private lateinit var buttonLoad : Button
-    private val GALLERY_REQUEST_CODE=123
 
     private var currentImageUri: Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,15 +57,6 @@ class TranslateAcitivity : AppCompatActivity() {
 
         buttonLoad.setOnClickListener{
             startGallery()
-//            if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)
-//                ==PackageManager.PERMISSION_GRANTED){
-//                val intent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//                intent.type = "image/*"
-//                val mimeTypes = arrayOf("image/jpeg","image/png","image/jpg")
-//                intent.putExtra(Intent.EXTRA_MIME_TYPES,mimeTypes)
-//                intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-//                onResult.launch(intent)
-//            }
         }
     }
 
@@ -118,34 +95,6 @@ class TranslateAcitivity : AppCompatActivity() {
         }
     }
 
-    //get image from gallery
-    private val onResult= registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result->
-        Log.i("TAG","This is the result : ${result.data} ${result.resultCode}")
-        onResultReceived(GALLERY_REQUEST_CODE,result)
-    }
-
-    private fun onResultReceived(requestCode:Int,result: ActivityResult?){
-        when (requestCode){
-            GALLERY_REQUEST_CODE->{
-                if(result?.resultCode== Activity.RESULT_OK){
-                    result.data?.data?.let { uri->
-                        Log.i("TAG","onResultReceived: $uri")
-                        val bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(uri))
-                        imageView.setImageBitmap(bitmap)
-                        outputGenerator(bitmap)
-                    }
-                }else{
-                    Log.e("TAG","onActivityResult: error in selecting image")
-                }
-            }
-        }
-    }
-
-    private fun resizeBitmap(bitmap: Bitmap, newWidth: Int, newHeight: Int): Bitmap {
-        val matrix = Matrix()
-        matrix.postScale(newWidth.toFloat() / bitmap.width, newHeight.toFloat() / bitmap.height)
-        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-    }
 
     private fun outputGenerator(bitmap: Bitmap){
         //declearing tensorflow lite model variable
@@ -156,61 +105,18 @@ class TranslateAcitivity : AppCompatActivity() {
 
         // Runs model inference and gets result.
         val outputs = model.process(input)
-        val probability = outputs.probabilityAsTensorBuffer
 
-//        tvOutput.text = "probability : ${probability.shape}"
-
-        // Resize the bitmap to match the input size expected by the model
-//        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 244, 244, true)
-//        val resizedBitmap = resizeBitmap(bitmap, 244, 244)
-
-        // Convert the Bitmap to a ByteBuffer
-//        val inputBuffer = ByteBuffer.allocateDirect(1 * 244 * 244 * 3 * 4)
-//        inputBuffer.order(java.nio.ByteOrder.nativeOrder())
-
-        // Rewind the buffer before use
-//        inputBuffer.rewind()
-
-//        val intValues = IntArray(244 * 244)
-//        resizedBitmap.getPixels(intValues, 0, resizedBitmap.width, 0, 0, resizedBitmap.width, resizedBitmap.height)
-//
-//        for (i in 0 until 244) {
-//            for (j in 0 until 244) {
-//                val `val` = intValues[i * 244 + j]
-//                inputBuffer.putFloat(((`val` shr 16 and 0xFF) / 255.0).toFloat())
-//                inputBuffer.putFloat(((`val` shr 8 and 0xFF) / 255.0).toFloat())
-//                inputBuffer.putFloat(((`val` and 0xFF) / 255.0).toFloat())
-//            }
-//        }
-//
-//        // Rewind the buffer before use
-//        inputBuffer.rewind()
-
-//        val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 244, 244, 3), DataType.FLOAT32)
-//        inputFeature0.loadBuffer(inputBuffer)
-//
-//        // Runs model inference and gets result.
-//        val outputs = model.process(
-//            inputFeature0
-//        )
-//        val outputFeature0 = outputs.outputFeature0AsTensorBuffer
-//
-//        // Dapatkan indeks dengan nilai tertinggi (kelas prediksi)
+// Dapatkan indeks dengan nilai tertinggi (kelas prediksi)
         val maxIndex = outputs.probabilityAsTensorBuffer.floatArray.indices.maxBy { outputs.probabilityAsTensorBuffer.floatArray[it] }?:-1
-//
-//        // Pastikan bahwa indeks adalah valid dan bukan -1
+
+// Pastikan bahwa indeks adalah valid dan bukan -1
         val classes = arrayOf("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
         val predictedClass = if(maxIndex != -1) classes[maxIndex] else "Unknown"
-//
+
 //        // Tampilkan prediksi kelas dan probabilitas
         tvOutput.text = "Prediction Result : ${predictedClass}, \nProbability: ${outputs.probabilityAsTensorBuffer.floatArray[maxIndex]}"
 
 
-
-//        // Do something with the output, for example, update a TextView
-//        tvOutput.text = "Model Output: \nFloatArray: ${outputFeature0.floatArray[0]}"+"\nShape: ${outputFeature0.shape}"+"\ntypeSize: ${outputFeature0.typeSize}"+"\n" +
-//                "flatSize: ${outputFeature0.flatSize}"+"\nbuffer: ${outputFeature0.buffer}"
-//
         // Releases model resources if no longer used.
         model.close()
     }

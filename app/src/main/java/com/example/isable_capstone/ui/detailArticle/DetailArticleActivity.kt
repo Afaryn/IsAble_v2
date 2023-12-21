@@ -4,11 +4,9 @@ import android.content.Intent
 import android.content.Intent.EXTRA_TEXT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
 import com.bumptech.glide.Glide
-import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityDetailArticleBinding
-import com.example.isable_capstone.model.ArticleDataResource
+
 
 @Suppress("DEPRECATION")
 class DetailArticleActivity : AppCompatActivity() {

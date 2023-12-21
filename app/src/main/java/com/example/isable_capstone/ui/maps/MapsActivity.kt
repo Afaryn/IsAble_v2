@@ -81,7 +81,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         if (it.isNotEmpty()) {
                             val firstLocation = it[0]
                             val firstMarker = LatLng(firstLocation.latitude?.toDouble() ?: 0.0, firstLocation.longtitude?.toDouble() ?: 0.0)
-//                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(firstMarker, 15f))
+
                         }
                     } ?: run {
                         // Handle case where response body is null

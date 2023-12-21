@@ -1,7 +1,6 @@
 package com.example.isable_capstone.ui.translate
 
 import android.Manifest
-import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,14 +10,12 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.Toolbar
 import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.isable_capstone.R
 import com.example.isable_capstone.databinding.ActivityCameraBinding
-import com.example.isable_capstone.ml.SignLanguageModelV4RgbWithMetadata
 import org.tensorflow.lite.schema.Model
 
 class CameraActivity : AppCompatActivity() {
