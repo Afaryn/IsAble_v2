@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -16,6 +17,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -40,6 +42,8 @@ class TranslateAcitivity : AppCompatActivity() {
     private lateinit var tvOutput : TextView
     private lateinit var buttonLoad : Button
     private val GALLERY_REQUEST_CODE=123
+
+    private var currentImageUri: Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTranslateAcitivityBinding.inflate(layoutInflater)
@@ -66,6 +70,7 @@ class TranslateAcitivity : AppCompatActivity() {
         }
 
         buttonLoad.setOnClickListener{
+            startGallery()
 //            if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.READ_EXTERNAL_STORAGE)
 //                ==PackageManager.PERMISSION_GRANTED){
 //                val intent = Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -75,6 +80,24 @@ class TranslateAcitivity : AppCompatActivity() {
 //                intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
 //                onResult.launch(intent)
 //            }
+        }
+    }
+
+    private fun startGallery() {
+        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+
+    private val launcherGallery = registerForActivityResult(
+        ActivityResultContracts.PickVisualMedia()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            currentImageUri = uri
+            Log.i("TAG","onResultReceived: $currentImageUri")
+            val bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(currentImageUri!!))
+            imageView.setImageBitmap(bitmap)
+            outputGenerator(bitmap)
+        } else {
+            Log.d("Photo Picker", "No media selected")
         }
     }
 
@@ -180,7 +203,7 @@ class TranslateAcitivity : AppCompatActivity() {
         val predictedClass = if(maxIndex != -1) classes[maxIndex] else "Unknown"
 //
 //        // Tampilkan prediksi kelas dan probabilitas
-        tvOutput.text = "Model Output: ${predictedClass}, \nProbability: ${outputs.probabilityAsTensorBuffer.floatArray[maxIndex]} \nshape : ${outputs.probabilityAsTensorBuffer.shape}"
+        tvOutput.text = "Prediction Result : ${predictedClass}, \nProbability: ${outputs.probabilityAsTensorBuffer.floatArray[maxIndex]}"
 
 
 

@@ -7,6 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.detailArticle.DetailArticleActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
+        android:layout_gravity="bottom|right"
+        android:foregroundGravity="bottom"
+        app:fabSize="normal"
+        app:layout_anchorGravity="bottom|end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/baseline_share_24"
+        android:outlineSpotShadowColor="@color/black"
+        android:contentDescription="@string/BTN"
+        />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -100,6 +117,10 @@
                     android:textAlignment="gravity"
                     android:textAllCaps="true"
                     android:textSize="20sp" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <TextView

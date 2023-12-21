@@ -50,7 +50,7 @@
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/banner_slide"
                 android:layout_width="match_parent"
-                android:layout_height="161dp"
+                android:layout_height="165dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="25dp"
                 android:layout_marginStart="25dp"
@@ -97,6 +97,7 @@
                     android:contentDescription="button"/>
 
                 <ImageButton
+                    android:id="@+id/btn_translate"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="20dp"

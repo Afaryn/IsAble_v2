@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
     <background android:drawable="@drawable/white_background" />
-    <foreground android:drawable="@drawable/isable_logo_apk" />
-    <monochrome android:drawable="@drawable/isable_logo_apk" />
+    <foreground android:drawable="@drawable/isable_logo_apk3" />
+    <monochrome android:drawable="@drawable/isable_logo_apk3" />
 </adaptive-icon>

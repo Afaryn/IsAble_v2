@@ -112,7 +112,7 @@
                                 android:background="@color/white"
                                 android:contentDescription="@string/BTN"
                                 android:scaleType="fitCenter"
-                                android:src="@drawable/number_learning"
+                                android:src="@drawable/learning_1"
                                 tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
                         </androidx.cardview.widget.CardView>
 

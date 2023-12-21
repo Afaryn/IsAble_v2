@@ -24,6 +24,7 @@ import com.example.isable_capstone.ui.detailArticle.DetailArticleActivity
 import com.example.isable_capstone.ui.learning.LearningActivity
 import com.example.isable_capstone.ui.maps.MapsActivity
 import com.example.isable_capstone.ui.profile.DataProfile
+import com.example.isable_capstone.ui.translate.TranslateAcitivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -39,6 +40,8 @@ class HomeFragment : Fragment(), ArticleAdapter.OnItemClickListener{
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+
 
         val auth = FirebaseAuth.getInstance()
         val reference = FirebaseDatabase.getInstance().getReference("Users")
@@ -85,6 +88,12 @@ class HomeFragment : Fragment(), ArticleAdapter.OnItemClickListener{
         val btnLearn = view.findViewById<ImageButton>(R.id.btn_learning)
         btnLearn.setOnClickListener {
             startActivity(Intent(activity, LearningActivity::class.java))
+        }
+
+        //<---Learning--->
+        val btnTranslate = view.findViewById<ImageButton>(R.id.btn_translate)
+        btnTranslate.setOnClickListener {
+            startActivity(Intent(activity, TranslateAcitivity::class.java))
         }
 
         //<---RecyclerView--->

@@ -2,6 +2,7 @@ package com.example.isable_capstone.ui.learningDetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import com.bumptech.glide.Glide
 import com.example.isable_capstone.databinding.ActivityLearningDetailBinding
 
@@ -29,5 +30,17 @@ class LearningDetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title="Learning"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+    }
+
+    @Suppress("DEPRECATION")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

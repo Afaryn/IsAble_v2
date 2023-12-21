@@ -1,5 +1,7 @@
 package com.example.isable_capstone.ui.detailArticle
 
+import android.content.Intent
+import android.content.Intent.EXTRA_TEXT
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
@@ -19,6 +21,17 @@ class DetailArticleActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.imgToolbarBtnBack.setOnClickListener{onBackPressed()}
+        binding.fabShare.setOnClickListener{
+            val messageTitle = binding.tvJudulArticle.text.toString()
+            val messageDesc = binding.tvDesc.text.toString()
+            val berita = messageTitle + "\n\n" +messageDesc
+            val intent = Intent()
+            intent.action = Intent.ACTION_SEND
+            intent.putExtra(EXTRA_TEXT,berita)
+            intent.type="text/plain"
+
+            startActivity(Intent.createChooser(intent,"Share to:"))
+        }
 
         val articleId = intent.getIntExtra("article_id", -1)
 
